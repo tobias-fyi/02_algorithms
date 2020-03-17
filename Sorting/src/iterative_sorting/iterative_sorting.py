@@ -16,7 +16,7 @@ def bubble_sort(arr: list):
     """Simple implementation of the Bubble Sort algorithm.
     Loops through the array, comparing the value at each index, `i`, with that
     of its neighbor, `i + 1`. If `i` is greater, swap the two values.
-    
+
     :param arr (list) : List to be sorted.
     :return (list) : Sorted list.
     """
@@ -44,26 +44,32 @@ bubble_sorted_list = bubble_sort(unsorted)
 end = time.time()
 
 print(bubble_sorted_list)
-print(f"Runtime: {end - start}")
+print(f"Bubble sort runtime: {end - start}")
 
 
 # %%
-# TODO: Complete the selection_sort() function below
 def selection_sort(arr: list):
+    """Simple implementation of the Selection Sort algorithm.
+    Loops through the array, looking for the smallest item to the right of the
+    current one and swapping those two values.
+    
+    :param arr (list) : List to be sorted.
+    :return (list) : Sorted list.
+    """
     # loop through n-1 elements
     for i in range(0, len(arr) - 1):
         cur_index = i
         smallest_index = cur_index
         # Find next smallest element
         for j in range(cur_index + 1, len(arr)):
-            if arr[j] < arr[cur_index]:
+            if arr[j] < arr[smallest_index]:
                 smallest_index = j
 
-        # TODO: swap
-        # To swap, first get the values at the two indices in question
+        # Swap the values at the two indices in question
+        # First, extract the two values
         cur_index_val = arr[cur_index]
         smallest_index_val = arr[smallest_index]
-        # Then, assign each to the other's index
+        # Assign each to the other's index
         arr[cur_index] = smallest_index_val
         arr[smallest_index] = cur_index_val
 
@@ -75,7 +81,7 @@ select_sorted_list = selection_sort(unsorted)
 end = time.time()
 
 print(select_sorted_list)
-print(f"Runtime: {end - start}")
+print(f"Selection sort runtime: {end - start}")
 
 # %%
 # Confirm the sorting resulted in the same order
