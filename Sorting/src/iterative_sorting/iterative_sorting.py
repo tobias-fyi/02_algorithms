@@ -2,15 +2,12 @@
 Algorithms :: Iterative sorting
 """
 
-# %%
 # Import time to track algorithm runtime
 import time
 
-# %%
 # Test list to use while writing functionality
 unsorted = [18, 70, 1, 54, 84, 48, 7, 28, 96, 13, 2, 77, 63, 46, 87, 73, 52, 29]
 
-# %%
 # Implement the Bubble Sort function below
 def bubble_sort(arr: list):
     """Simple implementation of the Bubble Sort algorithm.
@@ -47,7 +44,6 @@ print(bubble_sorted_list)
 print(f"Bubble sort runtime: {end - start}")
 
 
-# %%
 def selection_sort(arr: list):
     """Simple implementation of the Selection Sort algorithm.
     Loops through the array, looking for the smallest item to the right of the
@@ -83,11 +79,9 @@ end = time.time()
 print(select_sorted_list)
 print(f"Selection sort runtime: {end - start}")
 
-# %%
 # Confirm the sorting resulted in the same order
 assert bubble_sorted_list == select_sorted_list
 
-# %%
 # TODO: STRETCH - Implement the Count Sort function below
 def count_sort(arr, maximum=-1):
 
