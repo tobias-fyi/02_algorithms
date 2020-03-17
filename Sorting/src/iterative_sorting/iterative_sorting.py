@@ -56,11 +56,11 @@ def selection_sort(arr: list):
     for i in range(0, len(arr) - 1):
         cur_index = i
         smallest_index = cur_index
-        # Find next smallest element
+
+        # Find next smallest item to the right of current item
         for j in range(cur_index + 1, len(arr)):
             if arr[j] < arr[smallest_index]:
                 smallest_index = j
-
         # Swap the values at the two indices in question
         # First, extract the two values
         cur_index_val = arr[cur_index]
