@@ -4,7 +4,8 @@ Algorithms :: Recursive sorting
 
 
 def merge(arrA, arrB):
-    """Merge two sorted arrays
+    """Merge two sorted arrays.
+
     :param arrA (list): First/left list to be merged.
     :param arrB (list): Second/right list to be merged.
     :return merged_arr (list): Resulting merged list.
@@ -26,7 +27,7 @@ def merge(arrA, arrB):
 
 
 def merge_sort(arr: list):
-    """A recursive merge sort algorithm.
+    """A recursive implementation of the merge sort algorithm.
     Splits the input array into halves until each item is in its own array.
     The individual item arrays are considered "sorted" and are then merged together.
     
