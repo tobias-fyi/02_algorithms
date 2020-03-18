@@ -4,7 +4,7 @@ Algorithms :: Recursion
 LSCS :: Unit 1, Sprint 2, Module 2
 """
 
-# # %%
+#
 # def this_recursion(n: int):
 #     print(n)
 #     if n == 5:
@@ -14,7 +14,6 @@ LSCS :: Unit 1, Sprint 2, Module 2
 
 # this_recursion(1)
 
-# %%
 # def this_recursion(n: int):
 #     print(n)
 #     if n == 100:
@@ -26,11 +25,8 @@ LSCS :: Unit 1, Sprint 2, Module 2
 
 # this_recursion(1)
 
-# %%
 from functools import lru_cache
 
-
-# %%
 
 # === Fibonacci === #
 def recurfib(n: int):
@@ -51,7 +47,6 @@ def recurfib(n: int):
 
 print(recurfib(5))
 
-# %%
 # Quick sort
 [5, 9, 3, 7]
 
@@ -65,3 +60,11 @@ print(recurfib(5))
 # Put anything smaller into left array
 # Put anything bigger into right array
 # return quicksort(left) + quicksort(right)
+
+
+def quicksort(arr: list):
+    # Base case: array is length 1 or 0
+    if len(arr) < 2:
+        return arr
+
+    # ...
