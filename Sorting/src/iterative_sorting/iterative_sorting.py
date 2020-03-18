@@ -52,11 +52,10 @@ def selection_sort(arr: list):
     :param arr (list) : List to be sorted.
     :return (list) : Sorted list.
     """
-    # loop through n-1 elements
+    # Loop through n-1 elements
     for i in range(0, len(arr) - 1):
         cur_index = i
         smallest_index = cur_index
-
         # Find next smallest item to the right of current item
         for j in range(cur_index + 1, len(arr)):
             if arr[j] < arr[smallest_index]:

@@ -28,12 +28,10 @@ Let's think about the group photo example again. Everyone's lined up and the pho
 
 #### Algorithm
 
-```
 1. Select a pivot. Often times this is the first or last element in a set. It can also be the middle.
 2. Move all elements smaller than the pivot to the left.
 3. Move all elements greater than the pivot to the right.
 4. While LHS and RHS are greater than 1, repeat steps 1-3 on each side.
-```
 
 ### Your Task
 
@@ -45,8 +43,10 @@ While ***Quick Sort*** has "quick" in its name, it is typically not used as freq
 
 ### Merge Sort
 
-Your boss asks you to organize an old filing cabinet with 20 years worth of financial documents. He would like things ordered chronologically. You feel overwhelemed. There are thousands of papers in this thing.
-So you decide to break this insane task up into more manageable pieces. First, you focus on organizing a single drawer. But this still has a lot of pieces of data that need to be sorted. Within the drawer, you pull out a single folder. You lay out all the contents on a table, grabbing two pieces at a time, placing the older document on top of the newer one. Then, you start merging sorted sets of documents together until the folder is done. Once all the folders have been reassembled, you order the folders correctly in the drawer. And then you put sorted drawers back into the filing cabinet. This idea of breaking a large set of data down into small pieces, sorting the pieces, then merging them back together is what ***Merge Sort*** is all about.  
+Your boss asks you to organize an old filing cabinet with 20 years worth of financial documents. He would like things ordered chronologically. You feel overwhelmed. There are thousands of papers in this thing.
+So you decide to break this insane task up into more manageable pieces.
+
+First, you focus on organizing a single drawer. But this still has a lot of pieces of data that need to be sorted. Within the drawer, you pull out a single folder. You lay out all the contents on a table, grabbing two pieces at a time, placing the older document on top of the newer one. Then, you start merging sorted sets of documents together until the folder is done. Once all the folders have been reassembled, you order the folders correctly in the drawer. And then you put sorted drawers back into the filing cabinet. This idea of breaking a large set of data down into small pieces, sorting the pieces, then merging them back together is what ***Merge Sort*** is all about.  
 
 [(VIDEO) Merge-sort with Transylvanian-saxon (German) folk dance](https://www.youtube.com/watch?v=XaqR3G_NVoo)  
 
@@ -54,13 +54,11 @@ So you decide to break this insane task up into more manageable pieces. First, y
 
 #### Algorithm
 
-```
 1. While your data set contains more than one item, split it in half
 2. Once you have gotten down to a single element, you have also *sorted* that element
    (a single element cannot be "out of order")
 3. Start merging your single lists of one element together into larger, sorted sets
 4. Repeat step 3 until the entire data set has been reassembled
-```
 
 #### Real-World Applications
 
