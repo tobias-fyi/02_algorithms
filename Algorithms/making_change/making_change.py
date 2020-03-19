@@ -2,11 +2,9 @@
 Algorithms :: Practice - making change
 """
 
-# %%
 import sys
 
 
-# %%
 def making_change(amt: int, coins: list) -> int:
     """Iterative implementation of the making change algorithm.
     
@@ -32,7 +30,6 @@ def making_change(amt: int, coins: list) -> int:
 making_change(100, [1, 5, 10, 25, 50])
 
 
-# %%
 def making_change_recursive(amt: int, denominations: list) -> int:
     """Recursive implementation of the making change algorithm.
     TODO: Fix the max recursion error for large initial amounts
@@ -73,7 +70,6 @@ making_change_recursive(100, [1, 5, 10, 25, 50])
 # making_change_recursive(9590, [1, 5, 10, 25, 50])
 
 
-# %%
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python making_change.py [amount]` with different amounts
