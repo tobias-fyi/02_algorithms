@@ -104,86 +104,50 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # NOTE: The problem constraints seem to indicate using a modified
-        # bubble sort as the base algorithm.
-
-        # Bubble sorting loops through n - 1 elements...
+        # NOTE: The problem seems to indicate using a modified bubble sort
+        # Bubble sort loops through n - 1 elements...
         # Or in robot-speak, while possible to move right, do so.
-
-        # NOTE: Robot starts out holding `None`, which when compared to
-        # any other item, returns None.
-        # However, the `.compare_item()` method returns `None` for both cases:
-        # One of `held` *or* `facing` is None. That complicates things a bit.
-        # TODO: Work around this behavior
-        # If robot's light is "ON", do not swap in the `None` case
-        # If robot's light is "OFF", swap the `None`
-        if self.light_is_on() is False and self.compare_item() is None:
-            # Robot's light is "OFF" and compare is None: `facing` is None
-            self.swap_item()
-            self.move_right()  # Move on past the None item
 
         # Keep track of swap using the robot's light
         self.set_light_off()  # starts out each iteration "OFF"
 
         # Move to the right (i.e. forward iteration)
         while self.can_move_right() is True:
-            # First, compare `held` (i) with `facing` (i + 1).
-            # NOTE: Rule of thumb: "hold" onto the greater of the two items
-            # If held is greater, `held` should go to the right
-            if self.compare_item() == 1:
-                # Do not swap items -> move right -> repeat
+            # === Compare i with i + 1 === #
+            # Swap None -> i: hold = i, face = None
+            self.swap_item()
+            # Move right    : hold = i, face = i + 1
+            self.move_right()
+            # Compare
+            # if i <= i+1: do not swap, put i back in place
+            if self.compare_item() == -1 or self.compare_item() == 0:
+                # Move left     : hold = 1, face = None
+                self.move_left()
+                # Swap i -> None: hold = None, face = i
+                self.swap_item()
+                # Move right    : hold = None, face = i + 1
                 self.move_right()
-            # If `facing` is greater, it should go to the right
-            # i.e. `facing` should be picked up and moved with the robot
-            elif self.compare_item() == -1:
-                # Swap items -> turn robot's light on -> move right -> repeat
+            # if i > i+1: swap, turn robot's light ON
+            elif self.compare_item() == 1:
+                # Swap i -> i+1 : hold = i + 1, face = i
                 self.swap_item()
                 self.set_light_on()  # Turn on to indicate a swap has occurred
-                self.move_right()
-            elif self.compare_item() == 0:  # Items are equal
-                # Do not swap (to save 1 time credit) -> move right -> repeat
+                # Move left     : hold = i + 1, face = None
+                self.move_left()
+                # Swap i+1->None: hold = None, face = i+1
                 self.swap_item()
-                self.move_right()
-            # If `facing` is None (ruled out `held` being None above loop)
-            elif self.compare_item() is None:
-                # Do not swap -> move right -> repeat
+                # Move right    : hold = None, face = i
                 self.move_right()
 
         # Robot reaches end (right) of list
-
         # If any swaps occurred during the loop, restart - call method again
         if self.light_is_on() is True:
-            # If the light is on when the robot reaches the end of the list,
-            # the last action will be a swap?
-            self.swap_item()
-            # TODO: Fix bug where next-largest item does not get swapped.
-
             # This process should start from the very left side of list
             # So better make sure that the robot is all the way left to start!
             # While loop moves it all the way to left
             while self.can_move_left() is True:
                 self.move_left()
-                # if self.compare_item() == 1:
-                #     # Do not swap items -> move left -> repeat
-                #     self.move_left()
-                # # If `facing` is less, it should go to the right
-                # # i.e. `facing` should be picked up and moved with the robot
-                # elif self.compare_item() == -1:
-                #     # Swap items -> turn robot's light on -> move right -> repeat
-                #     self.swap_item()
-                #     self.set_light_on()  # Turn on to indicate a swap has occurred
-                #     self.move_left()
-                # elif self.compare_item() == 0:  # Items are equal
-                #     # Do not swap (to save 1 time credit) -> move right -> repeat
-                #     self.swap_item()
-                #     self.move_left()
-                # # If `facing` is None (ruled out `held` being None above loop)
-                # elif self.compare_item() is None:
-                #     # Do not swap -> move right -> repeat
-                #     self.move_left()
-
             self.sort()
-
         # Once a loop is completed with no swaps, sorting is complete!
         # NOTE: this method sorts an instance variable; no return is needed.
 
@@ -196,127 +160,110 @@ if __name__ == "__main__":
     l = [
         15,
         41,
+        58,
+        49,
         26,
         4,
+        28,
+        8,
+        61,
+        60,
+        65,
+        21,
+        78,
+        14,
+        35,
+        90,
+        54,
+        5,
         0,
-        26,
+        87,
+        82,
+        96,
+        43,
+        92,
+        62,
+        97,
+        69,
+        94,
+        99,
+        93,
+        76,
+        47,
+        2,
+        88,
+        51,
+        40,
+        95,
+        6,
+        23,
+        81,
+        30,
+        19,
+        25,
+        91,
+        18,
+        68,
+        71,
+        9,
+        66,
+        1,
+        45,
+        33,
+        3,
+        72,
+        16,
+        85,
+        27,
+        59,
+        64,
+        39,
+        32,
+        24,
+        38,
+        84,
+        44,
+        80,
+        11,
+        73,
+        42,
+        20,
+        10,
+        29,
+        22,
+        98,
+        17,
+        48,
+        52,
+        67,
+        53,
+        74,
+        77,
+        37,
+        63,
+        31,
+        7,
+        75,
+        36,
+        89,
+        70,
+        34,
+        79,
+        83,
+        13,
+        57,
+        86,
+        12,
+        56,
+        50,
+        55,
+        46,
     ]
 
     robot = SortingRobot(l)
 
     robot.sort()
     print(robot._list)
-
-
-# %%
-
-# l = [
-#     15,
-#     41,
-#     58,
-#     49,
-#     26,
-#     4,
-#     28,
-#     8,
-#     61,
-#     60,
-#     65,
-#     21,
-#     78,
-#     14,
-#     35,
-#     90,
-#     54,
-#     5,
-#     0,
-#     87,
-#     82,
-#     96,
-#     43,
-#     92,
-#     62,
-#     97,
-#     69,
-#     94,
-#     99,
-#     93,
-#     76,
-#     47,
-#     2,
-#     88,
-#     51,
-#     40,
-#     95,
-#     6,
-#     23,
-#     81,
-#     30,
-#     19,
-#     25,
-#     91,
-#     18,
-#     68,
-#     71,
-#     9,
-#     66,
-#     1,
-#     45,
-#     33,
-#     3,
-#     72,
-#     16,
-#     85,
-#     27,
-#     59,
-#     64,
-#     39,
-#     32,
-#     24,
-#     38,
-#     84,
-#     44,
-#     80,
-#     11,
-#     73,
-#     42,
-#     20,
-#     10,
-#     29,
-#     22,
-#     98,
-#     17,
-#     48,
-#     52,
-#     67,
-#     53,
-#     74,
-#     77,
-#     37,
-#     63,
-#     31,
-#     7,
-#     75,
-#     36,
-#     89,
-#     70,
-#     34,
-#     79,
-#     83,
-#     13,
-#     57,
-#     86,
-#     12,
-#     56,
-#     50,
-#     55,
-#     46,
-# ]
-
-# robot = SortingRobot(l)
-
-# robot.sort()
-# print(robot._list)
 
 
 # %%
