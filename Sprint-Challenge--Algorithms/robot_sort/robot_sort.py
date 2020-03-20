@@ -3,7 +3,6 @@ Algorithms :: Sprint Challenge - robot sort
 """
 
 
-# %%
 class SortingRobot:
     def __init__(self, l):
         """
@@ -105,46 +104,32 @@ class SortingRobot:
         Sort the robot's list.
         """
         # NOTE: The problem seems to indicate using a modified bubble sort
-        # Bubble sort loops through n - 1 elements...
-        # Or in robot-speak, while possible to move right, do so.
-
         # Keep track of swap using the robot's light
         self.set_light_off()  # starts out each iteration "OFF"
 
-        # Move to the right (i.e. forward iteration)
+        # Bubble sort loops through n - 1 elements...
+        # Or in robot-speak, while possible to move right, do so.
         while self.can_move_right() is True:
             # === Compare i with i + 1 === #
-            # Swap None -> i: hold = i, face = None
-            self.swap_item()
-            # Move right    : hold = i, face = i + 1
+            self.swap_item()  # Swap + move right to compare
             self.move_right()
-            # Compare
             # if i <= i+1: do not swap, put i back in place
             if self.compare_item() == -1 or self.compare_item() == 0:
-                # Move left     : hold = 1, face = None
-                self.move_left()
-                # Swap i -> None: hold = None, face = i
-                self.swap_item()
-                # Move right    : hold = None, face = i + 1
-                self.move_right()
+                self.move_left()  # Move back
+                self.swap_item()  # Put back
+                self.move_right()  # Move on to next item
             # if i > i+1: swap, turn robot's light ON
             elif self.compare_item() == 1:
-                # Swap i -> i+1 : hold = i + 1, face = i
                 self.swap_item()
-                self.set_light_on()  # Turn on to indicate a swap has occurred
-                # Move left     : hold = i + 1, face = None
+                self.set_light_on()  # Indicate a swap has occurred
                 self.move_left()
-                # Swap i+1->None: hold = None, face = i+1
-                self.swap_item()
-                # Move right    : hold = None, face = i
-                self.move_right()
+                self.swap_item()  # Put new item into old item's space
+                self.move_right()  # Move on to next item
 
         # Robot reaches end (right) of list
         # If any swaps occurred during the loop, restart - call method again
         if self.light_is_on() is True:
-            # This process should start from the very left side of list
-            # So better make sure that the robot is all the way left to start!
-            # While loop moves it all the way to left
+            # Move all the way back to to left
             while self.can_move_left() is True:
                 self.move_left()
             self.sort()
@@ -152,7 +137,6 @@ class SortingRobot:
         # NOTE: this method sorts an instance variable; no return is needed.
 
 
-# %%
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
@@ -264,6 +248,3 @@ if __name__ == "__main__":
 
     robot.sort()
     print(robot._list)
-
-
-# %%
